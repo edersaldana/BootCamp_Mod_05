@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -31,6 +33,12 @@ public class ProductService {
         log.info(" User Name: {}", user.getName());
 
         return  mapper.toDomainWithUser(productEntity,user);
+    }
+
+    public List<Product> getAllProducts() {
+
+        List<ProductEntity> entities = productRepository.findAll();
+        return this.mapper.toDomain(entities);
     }
 
 }

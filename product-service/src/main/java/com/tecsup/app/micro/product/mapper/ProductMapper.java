@@ -6,6 +6,8 @@ import com.tecsup.app.micro.product.entity.ProductEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
 
@@ -20,4 +22,6 @@ public interface ProductMapper {
         product.setCreatedByUser(user);
         return product;
     }
+
+    List<Product> toDomain(List<ProductEntity> entityList);
 }
