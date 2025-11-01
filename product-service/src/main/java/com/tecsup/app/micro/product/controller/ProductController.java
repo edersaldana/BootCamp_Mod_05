@@ -1,6 +1,5 @@
 package com.tecsup.app.micro.product.controller;
 
-
 import com.tecsup.app.micro.product.dto.Product;
 import com.tecsup.app.micro.product.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -21,16 +19,10 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping
-    public List<Product> getAllProducts() {
-        log.info("REST request to get all products");
-        return productService.getAllProducts();
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-
-        log.info("REST request to get product by id: {}", id);
-        return ResponseEntity.ok(productService.getProductById(id));
+    public ResponseEntity<Product> getUserById(@PathVariable Long id) {
+        log.info("REST request to get user by id: {}", id);
+        return ResponseEntity.ok(productService.getUserById(id));
     }
+
 }

@@ -31,6 +31,7 @@
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <spring-cloud.version>2025.0.0</spring-cloud.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,6 +71,8 @@
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -87,6 +90,19 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
+
+    <!-- Spring Actuator -->
+    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!-- Circuit Breaker -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+    </dependency>
+
     </dependencies>
 
     <!-- Spring Cloud Dependencies -->
@@ -133,7 +149,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
             <!-- Flyway Maven Plugin -->
             <plugin>
                 <groupId>org.flywaydb</groupId>
@@ -147,7 +162,6 @@
                     </schemas>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

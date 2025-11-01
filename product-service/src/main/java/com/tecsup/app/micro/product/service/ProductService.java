@@ -10,8 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -21,24 +19,17 @@ public class ProductService {
     private final ProductMapper mapper;
     private final UserClient userClient;
 
-    public Product getProductById(Long id) {
 
+    public Product getUserById(Long id){
+
+        // Call PostgreSQL productdb
         ProductEntity productEntity = productRepository.findById(id).orElse(null);
-
-        // Get client by id
-        //log.info(" User Id: {} ",entity.getCreatedBy());
 
         // Call microservice user
         User user = userClient.getUserById(productEntity.getCreatedBy());
-        log.info(" User Name: {}", user.getName());
+        log.info(" User : {}", user);
 
         return  mapper.toDomainWithUser(productEntity,user);
-    }
-
-    public List<Product> getAllProducts() {
-
-        List<ProductEntity> entities = productRepository.findAll();
-        return this.mapper.toDomain(entities);
     }
 
 }
